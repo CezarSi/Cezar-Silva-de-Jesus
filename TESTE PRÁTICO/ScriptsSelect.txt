@@ -1,0 +1,37 @@
+
+--------------========== Segue o primeiro select =========----------------
+
+select distinct a.customerName as Clinete, a.phone as Contato,country as Pais, d.productName as pedido,d.quantityInStock as Dtde_itens, c.quantityOrdered as Media_pedido,priceEach as Preço_cada
+from Customers a
+inner join Orders b on a.customercode = b.customercode
+inner join OrderDetails c on c.orderscode = b.orderscode
+inner join Products d on d.productCode = c.productCode
+where priceEach > 100.00;
+
+--------------========== Segue o Segundo select =========----------------
+
+select distinct a.customerName as Clinete, d.productName as pedido, status,b.orderDate as 'data do pedido',
+convert (char(7), orderDate, 111) as 'Ano_mes'
+from Customers a
+inner join Orders b on a.customercode = b.customercode
+inner join OrderDetails c on c.orderscode = b.orderscode
+inner join Products d on d.productCode = c.productCode;
+
+
+
+--------------========== Segue o Terceira select =========----------------
+
+select CONCAT ( (a.firstName),' ', (a.lastName)) as Employees_Name,b.occupation_employees as 'Funcao',a.email,b.reporte_management,b.reporte_management
+from Employees a
+inner join Occupation b on a.occupationcode = b.occupationcode
+
+
+--------------========== Segue o Quatro select =========----------------
+
+select distinct a.customerName as Clinete,d.productCode as vendor, concat (phone, ' , ',productVendor) as Contato_Vendedor,
+status,b.shippedDate as 'data_Envio',
+d.quantityInStock as Quantidade,d.buyPrice as preco,d.productName as Produto
+from Customers a
+inner join Orders b on a.customercode = b.customercode
+inner join OrderDetails c on c.orderscode = b.orderscode
+inner join Products d on d.productCode = c.productCode
